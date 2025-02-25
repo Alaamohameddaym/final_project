@@ -1,0 +1,15 @@
+<section class="w-[90%] m-auto my-10" >
+    <div class="flex flex-wrap  gap-5">
+        <div *ngFor="let item of productlist" 
+             class="w-80 border rounded-lg shadow-md p-3 text-center 
+                    hover:shadow-lg hover:shadow-green-700 
+                    transition duration-300 ease-in-out">
+            
+            <!-- Dynamic Image -->
+            <img [src]="item.image" alt="{{ item.name }}" class="w-full h-40 object-cover rounded-md">
+            
+            <!-- Dynamic Name -->
+            <p class="text-green-600 font-semibold text-lg mt-3">{{ item.name }}</p>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,52 @@
+<div class="bg-gray-100 p-6 rounded-lg shadow-md ">
+  <h2 class="text-2xl font-bold mb-4">My Wish List</h2>
+
+  <div class="bg-white p-6 rounded-lg shadow mb-10 h-[300px]" *ngFor="let item of productlist , let i = index">
+      <!-- Product Header -->
+      <div class="flex items-start space-x-6">
+          <!-- Product Image -->
+          <div class="w-[200px]" >
+              <img 
+                  [src]="item.imageCover"
+                  [alt]="item.title"
+                  
+              />
+          </div>
+
+          <!-- Product Details -->
+          <div class="flex-1 items-center">
+              <div class="flex justify-between items-center">
+                  <div>
+                      <h3 class="text-xl font-semibold">{{item.title}}</h3>
+                      <div class="text-sm text-gray-600 mt-1">
+                          <p>Category: {{item.category.name}}</p>
+                          <p>Brand: {{item.brand.name}}</p>
+                      </div>
+                  </div>
+                  <p class="text-green-600 font-bold text-2xl">{{item.price}} EGP</p>
+              </div>
+
+              <!-- Product Metadata -->
+             
+
+              <!-- Action Buttons -->
+              <div class="mt-6 flex justify-between items-center">
+                  <button class="text-red-500 flex items-center space-x-2 hover:text-red-700 transition" (click)="removeFromWishlist(item._id,i)">
+                      <i class="fa-solid fa-trash"></i>
+                      <span>Remove from Wishlist</span>
+                  </button>
+                  
+                  <button class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2" (click)="addProduct(item._id,i)">
+                      <i class="fa-solid fa-cart-plus"></i>
+                      <span>Add to Cart</span>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="productlist.length === 0" class="text-center py-8">
+      <p class="text-gray-500">Your wishlist is empty</p>
+  </div>
+</div>
